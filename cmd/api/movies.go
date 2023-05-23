@@ -117,7 +117,7 @@ func (app *application) updateMovieHandler(w http.ResponseWriter, r *http.Reques
 	}
 	err = app.models.Movies.Update(movie)
 	if err != nil {
-		app.serverErrorResponse(w, r, err)
+		app.editConflictResponse(w, r)
 		return
 	}
 	err = app.writeJSON(w, http.StatusOK, envelope{"movie": movie}, nil)
