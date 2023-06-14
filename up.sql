@@ -18,3 +18,14 @@ ALTER TABLE movies ADD CONSTRAINT genres_length_check CHECK (array_length(genres
 CREATE INDEX IF NOT EXISTS movies_title_idx ON movies USING GIN (to_tsvector('simple', title));
 CREATE INDEX IF NOT EXISTS movies_genres_idx ON movies USING GIN (genres);
 -- 3
+
+CREATE TABLE IF NOT EXISTS users (
+id bigserial PRIMARY KEY,
+created_at timestamp(0) with time zone NOT NULL DEFAULT NOW(),
+name text NOT NULL,
+email citext UNIQUE NOT NULL,
+password_hash bytea NOT NULL,
+activated bool NOT NULL,
+version integer NOT NULL DEFAULT 1
+);
+--4

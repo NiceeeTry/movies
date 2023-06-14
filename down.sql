@@ -8,6 +8,9 @@ ALTER TABLE movies DROP CONSTRAINT IF EXISTS genres_length_check;
 
 DROP INDEX IF EXISTS movies_title_idx;
 DROP INDEX IF EXISTS movies_genres_idx;
--- 3 
+-- 3
+
+DROP TABLE IF EXISTS users;
+--4
 
 
