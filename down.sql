@@ -12,5 +12,7 @@ DROP INDEX IF EXISTS movies_genres_idx;
 
 DROP TABLE IF EXISTS users;
 --4
+DROP TABLE IF EXISTS tokens;
+--5
 
 
