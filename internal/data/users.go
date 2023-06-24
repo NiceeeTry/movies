@@ -21,9 +21,22 @@ type User struct {
 	Version   int       `json:"-"`
 }
 
+var (
+	ErrDuplicateEmail = errors.New("duplicate email")
+	AnonymousUser     = &User{}
+)
+
+type UserModel struct {
+	DB *sql.DB
+}
+
 type password struct {
 	plaintext *string
 	hash      []byte
+}
+
+func (u *User) IsAnonymous() bool {
+	return u == AnonymousUser
 }
 
 func (p *password) Set(plaintextPassword string) error {
@@ -78,14 +91,6 @@ func ValidateUser(v *validator.Validator, user *User) {
 	if user.Password.hash == nil {
 		panic("missing password hash for user")
 	}
-}
-
-var (
-	ErrDuplicateEmail = errors.New("duplicate email")
-)
-
-type UserModel struct {
-	DB *sql.DB
 }
 
 func (m UserModel) Insert(user *User) error {
