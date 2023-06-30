@@ -15,4 +15,6 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS tokens;
 --5
 
-
+DROP TABLE IF EXISTS users_permissions;
+DROP TABLE IF EXISTS permissions;
+--6
